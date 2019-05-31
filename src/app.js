@@ -1,21 +1,23 @@
-ct express = require('express')
+require('dotenv').config({
+    path: process.env.NODE_ENV === 'test' ? '.env.test' : 'env'
+})
+const express = require('express');
 
-pController() {
-constructor() {
-    this.express = express();
+class AppController {
+    constructor() {
+        this.express = express();
 
-    this.middlewares();
+        this.middlewares();
         this.routes();
- 
-
-
+    }
     middlewares() {
-        this.exp ress.use(express.json())
-    }
+        this.express.use(express.json())
+    };
 
-    routes(){
+    routes() {
         this.express.use(require('./routes'))
-    }
+    };
 }
+
 
 module.exports = new AppController().express;
